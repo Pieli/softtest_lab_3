@@ -1,0 +1,3 @@
+[submodule "jabref"]
+	path = jabref
+	url = https://github.com/JabRef/jabref.git
