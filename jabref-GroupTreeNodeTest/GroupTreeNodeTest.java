@@ -136,26 +136,52 @@ public class GroupTreeNodeTest {
 
     @Test
     void equalsTest() {
+        GroupTreeNode parent = getNodeInSimpleTree();
+        GroupTreeNode node = parent.addSubgroup(
+                new WordKeywordGroup("node", GroupHierarchyType.INDEPENDENT, StandardField.AUTHOR, "author2", true, ',', false));
+        GroupTreeNode parent2 = getNodeInSimpleTree();
+        GroupTreeNode node2 = parent2.addSubgroup(
+                new WordKeywordGroup("node", GroupHierarchyType.INDEPENDENT, StandardField.AUTHOR, "author2", true, ',', false));
 
+        assertTrue(node.equals(node2));
     }
     @Test
     void getMatchingGroupsTest() {
-
+        GroupTreeNode parent = getNodeInSimpleTree();
+        GroupTreeNode node = parent.addSubgroup(
+                new WordKeywordGroup("node", GroupHierarchyType.INDEPENDENT, StandardField.AUTHOR, "author2", true, ',', false));
+        parent.getMatchingGroups(entries);
     }
     @Test
     void getEntriesInGroupTest() {
-
+        GroupTreeNode parent = getNodeInSimpleTree();
+        assertTrue(parent.getEntriesInGroup(entries).isEmpty());
     }
     @Test
     void copyNodeTest() {
-
+        GroupTreeNode parent = getNodeInSimpleTree();
+        GroupTreeNode node = parent.addSubgroup(
+                new WordKeywordGroup("node", GroupHierarchyType.INDEPENDENT, StandardField.AUTHOR, "author2", true, ',', false));
+        GroupTreeNode nodeCopy = node.copyNode();
+        assertEquals(node,nodeCopy);
     }
     @Test
     void toStringTest() {
-
+        GroupTreeNode parent = getNodeInSimpleTree();
+        GroupTreeNode node = parent.addSubgroup(
+                new WordKeywordGroup("node", GroupHierarchyType.INDEPENDENT, StandardField.AUTHOR, "author2", true, ',', false));
+        String stringRepr = node.toString();
+        assertTrue(stringRepr.contains("GroupTreeNode{group="));
     }
     @Test
     void isSameGroupAsTest() {
+        GroupTreeNode parent = getNodeInSimpleTree();
+        GroupTreeNode node = parent.addSubgroup(
+                new WordKeywordGroup("node", GroupHierarchyType.INDEPENDENT, StandardField.AUTHOR, "author2", true, ',', false));
+        GroupTreeNode parent2 = getNodeInSimpleTree();
+        GroupTreeNode node2 = parent.addSubgroup(
+                new WordKeywordGroup("node", GroupHierarchyType.INDEPENDENT, StandardField.AUTHOR, "author2", true, ',', false));
+        assertTrue(node.isSameGroupAs(node2));
 
     }
     // END ADDED TESTS

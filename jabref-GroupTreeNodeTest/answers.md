@@ -9,5 +9,5 @@
         5. toString() method
         6. isSameGroupAs() method
 
-        That's why 6 new tests have been added to the new GroupTreeNodeeTest.java.
-
+        That's why 6 new tests have been added to the new GroupTreeNodeeTest.java to increase coverage.
+	
